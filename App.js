@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { IconButton, Colors } from "react-native-paper";
 import Screen from "./Screen.js";
+import Grid from "react-native-grid-component";
 
 export default function App() {
   const [Data, setData] = useState([{ id: "a", value: "A" }]);
@@ -39,8 +40,7 @@ export default function App() {
       tempArr.push({ id: "d", value: "D" });
     }
     setData(tempArr);
-
-    // alert("number of meds" + Data.length + "    height size" + Height);
+    // alert("Num in data array " + Data.length);
   };
 
   const Render_Item = () => (
@@ -56,7 +56,11 @@ export default function App() {
         icon="plus"
         onPress={addMedicine}
       ></IconButton>
-      <FlatList data={Data} renderItem={({ item }) => <Render_Item />} />
+      <FlatList
+        data={Data}
+        numColumns={numColumns}
+        renderItem={({ item }) => <Render_Item />}
+      />
     </SafeAreaView>
   );
 }
